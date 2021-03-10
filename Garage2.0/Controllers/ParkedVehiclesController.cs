@@ -56,7 +56,7 @@ namespace Garage2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,VehicleType,RegNr,Color,Brand,Model,NrOfWheels,ArrivalTime")] ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Create( ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
@@ -164,16 +164,32 @@ namespace Garage2._0.Controllers
                           })
                           .ToListAsync();
         }
-        public async Task<IActionResult> HomePage(ParkedVehiclesViewModel parkedVehiclesViewModel)
+        public async Task<IActionResult> HomePage()
         {
-            var vehicles = parkedVehiclesViewModel.ParkedVehicles;
+            var vehicles = await _context.ParkedVehicle.ToListAsync();
+            var vTypes = await GetTypeAsync();
             var model = new ParkedVehiclesViewModel
             {
-
-                Types = await GetTypeAsync()
+                ParkedVehicles = vehicles,
+                Types = vTypes
             };
+            //var query = _context.ParkedVehicle.Select(v => new ParkedVehiclesViewModel
+            //{
+            //   ParkedVehicles = vehicles,
+            //   Types = vTypes
+                
+            //});
+
                return View(nameof(HomePage), model);
         }
           
         }
     }
+            //var model = new ParkedVehiclesViewModel
+            //{
+                
+            //};
+            //nameof(HomePage), vehicles
+// ToDo: 1:  Använd linq för att få ut alla parkerade fordon
+// 2: Anpassa vyn för att matcha vymodellen för att få ut en tabell
+// 3: 

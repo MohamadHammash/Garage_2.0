@@ -15,7 +15,7 @@ namespace Garage2._0.Models.ViewModels
         public IEnumerable<SelectListItem> Types { get; set; }
         [Display(Name = "Register Number")]
         public string RegNr { get; set; }
-        [Display(Name ="Type")]
+        [Display(Name = "Type")]
         public VehicleType VehicleType { get; set; }
         [Display(Name = "Arrival Time")]
         public DateTime ArrivalTime { get; set; }
