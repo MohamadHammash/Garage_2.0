@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Garage2._0.Data;
 using Garage2._0.Models;
+using Garage2._0.Models.ViewModels;
 
 namespace Garage2._0.Controllers
 {
@@ -24,6 +25,7 @@ namespace Garage2._0.Controllers
         {
             return View(await _context.ParkedVehicle.ToListAsync());
         }
+
 
         // GET: ParkedVehicles/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -149,5 +151,29 @@ namespace Garage2._0.Controllers
         {
             return _context.ParkedVehicle.Any(e => e.Id == id);
         }
+
+        private async Task<IEnumerable<SelectListItem>> GetTypeAsync()
+        {
+            return await _context.ParkedVehicle
+                          .Select(v => v.VehicleType)
+                          .Distinct()
+                          .Select(t => new SelectListItem
+                          {
+                              Text = t.ToString(),
+                              Value = t.ToString()
+                          })
+                          .ToListAsync();
+        }
+        public async Task<IActionResult> HomePage(ParkedVehiclesViewModel parkedVehiclesViewModel)
+        {
+            var vehicles = parkedVehiclesViewModel.ParkedVehicles;
+            var model = new ParkedVehiclesViewModel
+            {
+
+                Types = await GetTypeAsync()
+            };
+               return View(nameof(HomePage), model);
+        }
+          
+        }
     }
-}

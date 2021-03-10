@@ -12,8 +12,9 @@ namespace Garage2._0.Models
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name = "Type")]
         public VehicleType VehicleType { get; set; }
-        [Index(IsUnique = true)]
+        [Display(Name = "Registration Number")]
         public string RegNr { get; set; }
         public string Color { get; set; }
         [StringLength(30)]
@@ -21,9 +22,12 @@ namespace Garage2._0.Models
         [StringLength(30)]
         public string Model { get; set; }
         [Range(1,20)]
+
+        [Display(Name = "Number Of Wheels")]
         public int NrOfWheels { get; set; }
         [Display(Name = "Arrival Time")]
       
+        [Timestamp]
         public DateTime ArrivalTime { get; set; }
 
     }
