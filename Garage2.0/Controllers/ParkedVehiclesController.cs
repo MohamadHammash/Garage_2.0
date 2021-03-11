@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Garage2._0.Data;
 using Garage2._0.Models;
 using Garage2._0.Models.ViewModels;
+using System.Text;
 
 namespace Garage2._0.Controllers
 {
@@ -46,7 +47,7 @@ namespace Garage2._0.Controllers
         }
 
         // GET: ParkedVehicles/Create
-        public IActionResult Create()
+        public IActionResult Park()
         {
             return View();
         }
@@ -56,13 +57,17 @@ namespace Garage2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create( ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Park(ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
+
+
+
                 _context.Add(parkedVehicle);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(HomePage)); //ToDo:
+
             }
             return View(parkedVehicle);
         }
@@ -119,7 +124,7 @@ namespace Garage2._0.Controllers
         }
 
         // GET: ParkedVehicles/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Unpark(int? id)
         {
             if (id == null)
             {
@@ -137,14 +142,14 @@ namespace Garage2._0.Controllers
         }
 
         // POST: ParkedVehicles/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Unpark")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> UnparkConfirmed(int id)
         {
             var parkedVehicle = await _context.ParkedVehicle.FindAsync(id);
             _context.ParkedVehicle.Remove(parkedVehicle);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(HomePage)); //ToDo:
         }
 
         private bool ParkedVehicleExists(int id)
@@ -173,57 +178,53 @@ namespace Garage2._0.Controllers
                 ParkedVehicles = vehicles,
                 Types = vTypes
             };
-            //var query = _context.ParkedVehicle.Select(v => new ParkedVehiclesViewModel
-            //{
-            //   ParkedVehicles = vehicles,
-            //   Types = vTypes
-                
-            //});
-
-               return View(nameof(HomePage), model);
-        }
-
-        public async Task<IActionResult> Index2()
-        {
-            var vehicles = await _context.ParkedVehicle.ToListAsync();
-
             
-            var model = new TypeViewModel
-            {
 
-                Vehicles = vehicles
-            };
-
-            return View(model);
+            return View(nameof(HomePage), model);
         }
 
-        public IActionResult Filter(TypeViewModel viewModel)
+
+
+
+
+       
+
+        public IActionResult Filter(ParkedVehiclesViewModel viewModel)
         {
-            var vehicles = string.IsNullOrWhiteSpace(viewModel.RegNo) ?
+            var vehicles = string.IsNullOrWhiteSpace(viewModel.RegNr) ?
                 _context.ParkedVehicle :
-                _context.ParkedVehicle.Where(m => m.RegNr.StartsWith(viewModel.RegNo));
+                _context.ParkedVehicle.Where(m => m.RegNr.StartsWith(viewModel.RegNr));
 
             vehicles = viewModel.VehicleType == null ?
                 vehicles :
                 vehicles.Where(V => V.VehicleType == viewModel.VehicleType);
 
-            var model = new TypeViewModel
+            var model = new ParkedVehiclesViewModel
             {
-                Vehicles = vehicles
-               
+                ParkedVehicles = vehicles
+
             };
 
-            return View(nameof(Index2), model);
+            return View(nameof(HomePage), model);
 
         }
 
+
     }
-    }
-            //var model = new ParkedVehiclesViewModel
+}
+        //public bool RegNrExists(string regNr)
+        //{
+        //    var garage = _context.ParkedVehicle;
+        //    return  garage.FirstOrDefault(v => regNr.Equals(v.RegNr, StringComparison.InvariantCultureIgnoreCase)) is null ? false : true;
+        //}
+           
+
+//var model = new ParkedVehiclesViewModel
             //{
-                
             //};
             //nameof(HomePage), vehicles
+
+
 // ToDo: 1:  Använd linq för att få ut alla parkerade fordon
 // 2: Anpassa vyn för att matcha vymodellen för att få ut en tabell
 // 3: 
