@@ -37,8 +37,8 @@ namespace Garage2._0.Data
                 VehicleType = VehicleType.Car,
                 RegNr = "BCA321",
                 Color = "Black",
-                Brand = "",
-                Model = "",
+                Brand = "Toyota",
+                Model = "Corolla",
                 NrOfWheels = 4,
                 ArrivalTime = new DateTime(2020, 12, 31, 16, 25, 0)
             });
