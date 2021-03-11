@@ -1,0 +1,29 @@
+﻿@model TypeViewModel
+@inject Garage2._0.services.ITypeSelectService service
+
+@*@model IEnumerable<Garage2._0.Models.ParkedVehicle>*@
+@{
+    ViewData["Title"] = "Index2";
+}
+
+<h1>Search Vehicle By Type</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@*<form asp-action="Filter">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" asp-for="RegNo" placeholder="Search on title..." />
+        <div class="input-group-append">
+            <select asp-for="VehicleType" asp-items="@await service.GetTypesAsync()" class="form-control">
+                <option selected="selected" value="">Please select</option>
+            </select>
+        </div>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search">&emsp;Search</i></button>
+        </div>
+    </div>
+</form>*@
+
+@*<partial name="MoviePartial" model="@Model.Vehicles" />*@

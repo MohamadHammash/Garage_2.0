@@ -182,8 +182,42 @@ namespace Garage2._0.Controllers
 
                return View(nameof(HomePage), model);
         }
-          
+
+        public async Task<IActionResult> Index2()
+        {
+            var vehicles = await _context.ParkedVehicle.ToListAsync();
+
+            
+            var model = new TypeViewModel
+            {
+
+                Vehicles = vehicles
+            };
+
+            return View(model);
         }
+
+        public IActionResult Filter(TypeViewModel viewModel)
+        {
+            var vehicles = string.IsNullOrWhiteSpace(viewModel.RegNo) ?
+                _context.ParkedVehicle :
+                _context.ParkedVehicle.Where(m => m.RegNr.StartsWith(viewModel.RegNo));
+
+            vehicles = viewModel.VehicleType == null ?
+                vehicles :
+                vehicles.Where(V => V.VehicleType == viewModel.VehicleType);
+
+            var model = new TypeViewModel
+            {
+                Vehicles = vehicles
+               
+            };
+
+            return View(nameof(Index2), model);
+
+        }
+
+    }
     }
             //var model = new ParkedVehiclesViewModel
             //{
