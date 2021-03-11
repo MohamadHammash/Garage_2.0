@@ -61,6 +61,7 @@ namespace Garage2._0.Controllers
         {
             if (ModelState.IsValid)
             {
+                parkedVehicle.ArrivalTime = DateTime.Now;
 
 
 
@@ -138,7 +139,9 @@ namespace Garage2._0.Controllers
                 return NotFound();
             }
 
-            return View(parkedVehicle);
+            var model = new LeavingVehicleViewModel(parkedVehicle);
+
+            return View(model);
         }
 
         // POST: ParkedVehicles/Delete/5
