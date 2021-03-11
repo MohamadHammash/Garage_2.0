@@ -13,13 +13,13 @@ namespace Garage2._0.Models.ViewModels
     {
         public IEnumerable<ParkedVehicle> ParkedVehicles { get; set; }
         public IEnumerable<SelectListItem> Types { get; set; }
-        [Display(Name = "Register Number")]
+        [Display(Name = "Registration Number")]
         public string RegNr { get; set; }
         [Display(Name = "Type")]
-        public VehicleType VehicleType { get; set; }
+        public VehicleType? VehicleType { get; set; } //ToDo:
         [Display(Name = "Arrival Time")]
         public DateTime ArrivalTime { get; set; }
-        [Timestamp]
+       
         public DateTime DepartureTime { get; set; }
     }
 }

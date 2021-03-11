@@ -3,7 +3,7 @@
 <h1>Home Page</h1>
 
 <p>
-    <a asp-action="Create">Park a new vehicle</a>
+    <a asp-action="Park">Park a new vehicle</a>
 </p>
 
 <table class="table">
@@ -39,7 +39,7 @@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Leave the garage</a>
+                    <a asp-action="Unpark" asp-route-id="@item.Id">Leave the garage</a>
                 </td>
             </tr>
         }
