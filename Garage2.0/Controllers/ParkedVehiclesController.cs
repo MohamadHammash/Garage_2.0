@@ -45,6 +45,15 @@ namespace Garage2._0.Controllers
 
             return View(parkedVehicle);
         }
+        public IActionResult SuccessModal()
+        {
+            return View();
+        }
+        public IActionResult FailModal()
+        {
+            return View();
+        }
+
 
         // GET: ParkedVehicles/Create
         public IActionResult Park()
@@ -75,7 +84,7 @@ namespace Garage2._0.Controllers
 
                 _context.Add(parkedVehicle);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(HomePage)); //ToDo:
+                return RedirectToAction(nameof(SuccessModal)); //ToDo:
 
             }
             return View(parkedVehicle);
