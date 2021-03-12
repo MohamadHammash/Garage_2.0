@@ -72,6 +72,7 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-input {
-    background: transparent;
+input[type="text"] {
+    background: transparent !important;
+    border: none !important;
 }

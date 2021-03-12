@@ -9,9 +9,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark  border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="ParkedVehicles" asp-action="HomePage">Garage</a>
+                <a class="navbar-brand text-info" asp-area="" asp-controller="ParkedVehicles" asp-action="HomePage">Garage</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,10 +19,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ParkedVehicles" asp-action="Index">Vehicles detailed list</a>
+                            <a class="nav-link text-info" asp-area="" asp-controller="ParkedVehicles" asp-action="Index">Vehicles detailed list</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> @*ToDo: either delete it or link it somewhere else *@
+                            <a class="nav-link text-info" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> @*ToDo: either delete it or link it somewhere else *@
                         </li>
                     </ul>
                 </div>
@@ -35,9 +35,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; NA21 Group 2 Garage 2.0 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-info bg-dark">
+        <div class="container text-info text-center">
+            &copy; NA21 Group 2 Garage 2.0 - <a asp-area=""  class="text-info" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
