@@ -24,7 +24,17 @@ namespace Garage2._0.Controllers
         // GET: ParkedVehicles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ParkedVehicle.ToListAsync());
+            var vehicles = await _context.ParkedVehicle.ToListAsync();
+            var vTypes = await GetTypeAsync();
+            var model = new ParkedVehiclesViewModel
+            {
+                ParkedVehicles = vehicles,
+                Types = vTypes
+            };
+
+
+            return View(nameof(Index), model);
+            //return View(await _context.ParkedVehicle.ToListAsync());
         }
 
 
@@ -218,7 +228,25 @@ namespace Garage2._0.Controllers
             return View(nameof(HomePage), model);
 
         }
-       
+        public IActionResult FilterDetailedList(ParkedVehiclesViewModel viewModel)
+        {
+            var vehicles = string.IsNullOrWhiteSpace(viewModel.RegNr) ?
+                _context.ParkedVehicle :
+                _context.ParkedVehicle.Where(m => m.RegNr.StartsWith(viewModel.RegNr));
+
+            vehicles = viewModel.VehicleType == null ?
+                vehicles :
+                vehicles.Where(V => V.VehicleType == viewModel.VehicleType);
+
+            var model = new ParkedVehiclesViewModel
+            {
+                ParkedVehicles = vehicles
+
+            };
+            return View(nameof(Index), model);
+
+        }
+
         public async Task<IActionResult> Receipt(int? id)
         {
             if (id == null)
