@@ -89,6 +89,7 @@ namespace Garage2._0.Controllers
             {
 
                 parkedVehicle.ArrivalTime = DateTime.Now;
+                //.ToString("yy-MM-dd:HH-mm")
 
 
 

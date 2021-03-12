@@ -28,8 +28,8 @@ namespace Garage2._0.Models
         [Display(Name = "Number Of Wheels")]
         public int NrOfWheels { get; set; }
         [Display(Name = "Arrival Time")]
-      
-        
+        //[DisplayFormat(DataFormatString = "yy-MM-dd:HH-mm")]
+        [DisplayFormat(DataFormatString = "{0:yy-MMMM-dd HH:mm} O'clock")]
         public DateTime ArrivalTime { get; set; }
 
     }
