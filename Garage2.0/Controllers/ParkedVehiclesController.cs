@@ -59,8 +59,16 @@ namespace Garage2._0.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Park(ParkedVehicle parkedVehicle)
         {
+
+            bool IsProductNameExist = _context.ParkedVehicle.Any //ToDo
+         (x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id);
+            if (IsProductNameExist == true)
+            {
+                ModelState.AddModelError("RegNr", "Vehicle already exists");
+            }
             if (ModelState.IsValid)
             {
+
                 parkedVehicle.ArrivalTime = DateTime.Now;
 
 
@@ -76,6 +84,7 @@ namespace Garage2._0.Controllers
         // GET: ParkedVehicles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -94,11 +103,17 @@ namespace Garage2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,VehicleType,RegNr,Color,Brand,Model,NrOfWheels,ArrivalTime")] ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Edit(int id,  ParkedVehicle parkedVehicle)
         {
             if (id != parkedVehicle.Id)
             {
                 return NotFound();
+            }
+            bool IsProductNameExist = _context.ParkedVehicle.Any //ToDo
+        (x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id);
+            if (IsProductNameExist == true)
+            {
+                ModelState.AddModelError("RegNr", "Vehicle already exists");
             }
 
             if (ModelState.IsValid)
@@ -181,17 +196,10 @@ namespace Garage2._0.Controllers
                 ParkedVehicles = vehicles,
                 Types = vTypes
             };
-            
+
 
             return View(nameof(HomePage), model);
         }
-
-
-
-
-
-       
-
         public IActionResult Filter(ParkedVehiclesViewModel viewModel)
         {
             var vehicles = string.IsNullOrWhiteSpace(viewModel.RegNr) ?
@@ -207,27 +215,9 @@ namespace Garage2._0.Controllers
                 ParkedVehicles = vehicles
 
             };
-
             return View(nameof(HomePage), model);
-
         }
-
-
     }
 }
-        //public bool RegNrExists(string regNr)
-        //{
-        //    var garage = _context.ParkedVehicle;
-        //    return  garage.FirstOrDefault(v => regNr.Equals(v.RegNr, StringComparison.InvariantCultureIgnoreCase)) is null ? false : true;
-        //}
-           
-
-//var model = new ParkedVehiclesViewModel
-            //{
-            //};
-            //nameof(HomePage), vehicles
 
 
-// ToDo: 1:  Använd linq för att få ut alla parkerade fordon
-// 2: Anpassa vyn för att matcha vymodellen för att få ut en tabell
-// 3: 
