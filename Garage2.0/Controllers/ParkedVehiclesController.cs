@@ -211,7 +211,7 @@ namespace Garage2._0.Controllers
             return View(nameof(HomePage), model);
 
         }
-
+       
         public async Task<IActionResult> Receipt(int? id)
         {
             if (id == null)

@@ -21,5 +21,7 @@ namespace Garage2._0.Models.ViewModels
         public DateTime ArrivalTime { get; set; }
        
         public DateTime DepartureTime { get; set; }
+
+
     }
 }
