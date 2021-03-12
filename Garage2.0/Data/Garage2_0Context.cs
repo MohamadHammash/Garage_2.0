@@ -14,11 +14,10 @@ namespace Garage2._0.Data
             : base(options)
         {
         }
-        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+          
             modelBuilder.Entity<ParkedVehicle>().HasData(new ParkedVehicle
             {
                 Id = 1,
@@ -28,7 +27,7 @@ namespace Garage2._0.Data
                 Brand = "Volvo",
                 Model = "XC40",
                 NrOfWheels = 4,
-                ArrivalTime = new DateTime(2020, 12, 25, 8, 15, 30)
+                ArrivalTime = new DateTime(2021, 3, 11, 8, 15, 30)
             });
 
             modelBuilder.Entity<ParkedVehicle>().HasData(new ParkedVehicle
@@ -37,10 +36,10 @@ namespace Garage2._0.Data
                 VehicleType = VehicleType.Car,
                 RegNr = "BCA321",
                 Color = "Black",
-                Brand = "",
-                Model = "",
+                Brand = "Toyota",
+                Model = "Corolla",
                 NrOfWheels = 4,
-                ArrivalTime = new DateTime(2020, 12, 31, 16, 25, 0)
+                ArrivalTime = new DateTime(2021, 3, 11, 16, 25, 0)
             });
 
             modelBuilder.Entity<ParkedVehicle>().HasData(new ParkedVehicle
@@ -52,7 +51,7 @@ namespace Garage2._0.Data
                 Brand = "Harley Davidson",
                 Model = "Low rider",
                 NrOfWheels = 2,
-                ArrivalTime = new DateTime(2021, 3, 10, 21, 10, 0)
+                ArrivalTime = new DateTime(2021, 3, 11, 21, 10, 0)
             });
 
             modelBuilder.Entity<ParkedVehicle>().HasData(new ParkedVehicle
@@ -64,7 +63,7 @@ namespace Garage2._0.Data
                 Brand = "Volkswagen",
                 Model = "Golf",
                 NrOfWheels = 4,
-                ArrivalTime = (DateTime.Now).AddHours(-37.33)
+                ArrivalTime = (DateTime.Now).AddHours(-1)
             });
 
             modelBuilder.Entity<ParkedVehicle>().HasData(new ParkedVehicle
@@ -76,7 +75,7 @@ namespace Garage2._0.Data
                 Brand = "Scania",
                 Model = "L320",
                 NrOfWheels = 4,
-                ArrivalTime = (DateTime.Now).AddHours(-2.5)
+                ArrivalTime = (DateTime.Now).AddHours(-0.5)
             }); ;
 
         }
