@@ -3,66 +3,74 @@
 @{
     ViewData["Title"] = "Leave the garage";
 }
+<div class="justify-content-center">
 
-<h1>Delete</h1>
 
-<h3>Are you sure you want unpark this vehicle?</h3>
-<div>
-    <h4>Vehicle details:</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LeavingVehicle.VehicleType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LeavingVehicle.VehicleType)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LeavingVehicle.RegNr)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LeavingVehicle.RegNr)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LeavingVehicle.Color)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LeavingVehicle.Color)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LeavingVehicle.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LeavingVehicle.Brand)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LeavingVehicle.Model)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LeavingVehicle.Model)
-        </dd>
-        <dt class="col-sm-2">
-            Total parking (hours) 
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ParkingTime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ParkingCost)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ParkingCost)
-        </dd>
-    </dl>
-    
-    <form asp-action="Unpark">
-        <input type="hidden" asp-for="LeavingVehicle.Id" />
-        <input type="submit" value="Unpark" class="btn btn-danger mb-3" /> |
-        <a asp-action="HomePage"><input value="Back to List" class="btn btn-info" /></a>
+    <h1 class="text-center">Delete</h1>
 
-        <div class="form-group">
-             <a asp-action="Receipt"><input  value="Need A Receipt?" class="btn btn-info" /></a>
-            <a asp-action="HomePage"><input  type="submit" value="Dont Need A Receipt?" class="btn btn-info" /></a>
-        </div>
-    </form>
+    <h3 class="text-center">Are you sure you want unpark this vehicle?</h3>
+    <div  >
+        <h4>Vehicle details:</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LeavingVehicle.VehicleType)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LeavingVehicle.VehicleType)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LeavingVehicle.RegNr)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LeavingVehicle.RegNr)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LeavingVehicle.Color)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LeavingVehicle.Color)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LeavingVehicle.Brand)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LeavingVehicle.Brand)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LeavingVehicle.Model)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LeavingVehicle.Model)
+            </dd>
+            <dt class="col-sm-2">
+                Total parking (hours)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ParkingTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ParkingCost)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ParkingCost)
+            </dd>
+        </dl>
+
+        <form asp-action="Unpark">
+            <input type="hidden" asp-for="LeavingVehicle.Id" />
+            
+                <input type="submit" value="Unpark" class="btn btn-outline-danger" />
+            
+            <a asp-action="HomePage"><input value="Home" class="btn btn-outline-info" /></a>
+
+            
+           
+                <a asp-action="Receipt" asp-for="@Model.LeavingVehicle.Id"><input value="Need A Receipt?" class="btn  btn-outline-info" /></a>
+               
+
+            
+
+        </form>
+    </div>
 </div>
