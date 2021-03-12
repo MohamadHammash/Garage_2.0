@@ -42,7 +42,7 @@
             @Html.DisplayFor(model => model.LeavingVehicle.Model)
         </dd>
         <dt class="col-sm-2">
-            Total parking (hours) 
+            Total parking (hours)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ParkingTime)
@@ -54,15 +54,35 @@
             @Html.DisplayFor(model => model.ParkingCost)
         </dd>
     </dl>
-    
+
     <form asp-action="Unpark">
         <input type="hidden" asp-for="LeavingVehicle.Id" />
         <input type="submit" value="Unpark" class="btn btn-danger mb-3" /> |
-        <a asp-action="HomePage"><input value="Back to List" class="btn btn-info" /></a>
-
-        <div class="form-group">
-             <a asp-action="Receipt"><input  value="Need A Receipt?" class="btn btn-info" /></a>
-            <a asp-action="HomePage"><input  type="submit" value="Dont Need A Receipt?" class="btn btn-info" /></a>
-        </div>
     </form>
+
+    <a asp-action="HomePage"><input value="Back to List" class="btn btn-info" /></a>
+    <br />
+    
+        <a asp-action="Receipt" asp-route-id="@Model.LeavingVehicle.Id"><input type="submit" value="Need A Receipt?" class="btn btn-info" /></a>
+        <a asp-action="HomePage"><input type="submit" value="Dont Need A Receipt?" class="btn btn-info" /></a>
+   
 </div>
+
+<script>
+
+
+  //  var g_id = getIdFromURL();
+
+  //function getIdFromURL() {
+  //  var urlArray = window.location.href.split('/');
+  //  var id = urlArray[urlArray.length - 1];
+  //  return id;
+
+
+
+
+
+</script>
+
+     
+
