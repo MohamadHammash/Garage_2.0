@@ -57,7 +57,7 @@ namespace Garage2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Park(ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Park1(ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
@@ -211,6 +211,38 @@ namespace Garage2._0.Controllers
             return View(nameof(HomePage), model);
 
         }
+       
+        public async Task<IActionResult> Receipt(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var parkedVehicle = await _context.ParkedVehicle
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (parkedVehicle == null)
+            {
+                return NotFound();
+            }
+
+            var model = new LeavingVehicleViewModel(parkedVehicle);
+
+            return View(model);
+        }
+
+        public IActionResult GeneratePDF()
+        {
+
+            return new RotativaCore.ActionAsPdf("Receipt");
+        }
+
+
+
+
+
+
+
 
 
     }

@@ -1,27 +1,27 @@
 ﻿@model ParkedVehiclesViewModel
 @inject Garage2._0.services.ITypeSelectService service
 
-<h1>Home Page</h1>
+<h1 class="text-center text-info">Welcome to Stockholm Garage!</h1>
 
-<p>
-    <a asp-action="Park">Park a new vehicle</a>
-</p>
+<h3 class="text-center">
+    <a asp-action="Park" class="text-info">Park a new vehicle</a>
+</h3>
 
 <form asp-action="Filter">
     <div class="input-group mb-3">
-        <input type="text" class="form-control" asp-for="RegNr" placeholder="Search on title..." />
+        <input type="text" class="form-control" asp-for="RegNr" placeholder="Search by registration number" />
         <div class="input-group-append">
             <select asp-for="VehicleType" asp-items="@await service.GetTypesAsync()" class="form-control">
                 <option selected="selected" value="">Please select</option>
             </select>
         </div>
         <div class="input-group-append">
-            <button type="submit" class="btn btn-primary"><i class="fa fa-search">&emsp;Search</i></button>
+            <button type="submit" class="btn btn-info"><i class="fa fa-search">&emsp;Search</i></button>
         </div>
     </div>
 </form>
 
-<table class="table">
+<table class="table table-dark table-striped">
     <thead>
         <tr>
             <th>
@@ -52,9 +52,9 @@
                     @Html.DisplayFor(modelItem => item.ArrivalTime)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Unpark" asp-route-id="@item.Id">Leave the garage</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"  class="text-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id"  class="text-info">Details</a> |
+                    <a asp-action="Unpark" asp-route-id="@item.Id" class="text-info">Leave the garage</a>
                 </td>
             </tr>
         }
