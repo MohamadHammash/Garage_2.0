@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Garage2._0.Models.ParkedVehicle>
-
+﻿@*model IEnumerable<ParkedVehicle>*@
+@model ParkedVehiclesViewModel
+@inject Garage2._0.services.ITypeSelectService service
 @{
     ViewData["Title"] = "Vehicles Details";
 }
@@ -9,4 +10,18 @@
 <p class="text-center h3">
     <a asp-action="Park"  class="text-center text-info">Park a new vehicle</a>
 </p>
-<partial name="PartialVehicles" />
+
+<form asp-action="FilterDetailedList">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" asp-for="RegNr" placeholder="Search by registration number" />
+        <div class="input-group-append">
+            <select asp-for="VehicleType" asp-items="@await service.GetTypesAsync()" class="form-control">
+                <option selected="selected" value="">Please select</option>
+            </select>
+        </div>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-info"><i class="fa fa-search">&emsp;Search</i></button>
+        </div>
+    </div>
+</form>
+<partial name="PartialVehicles" model="@Model.ParkedVehicles" />
