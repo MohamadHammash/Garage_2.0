@@ -60,9 +60,9 @@ namespace Garage2._0.Controllers
         public async Task<IActionResult> Park(ParkedVehicle parkedVehicle)
         {
 
-            bool IsProductNameExist = _context.ParkedVehicle.Any //ToDo
+            bool RegNrExits = _context.ParkedVehicle.Any //ToDo
          (x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id);
-            if (IsProductNameExist == true)
+            if (RegNrExits == true)
             {
                 ModelState.AddModelError("RegNr", "Vehicle already exists");
             }
@@ -109,9 +109,9 @@ namespace Garage2._0.Controllers
             {
                 return NotFound();
             }
-            bool IsProductNameExist = _context.ParkedVehicle.Any //ToDo
+            bool RegNrExits = _context.ParkedVehicle.Any //ToDo
         (x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id);
-            if (IsProductNameExist == true)
+            if (RegNrExits == true)
             {
                 ModelState.AddModelError("RegNr", "Vehicle already exists");
             }
