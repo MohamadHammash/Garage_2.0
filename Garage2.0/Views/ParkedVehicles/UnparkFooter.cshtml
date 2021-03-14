@@ -1,78 +1,110 @@
 ﻿@model LeavingVehicleViewModel
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
-        Unpark and Get Your Receipt
-    </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Your Receipt</h5>
-                   
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
+            Unpark
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Before you go....</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               Do you need your Receipt?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
+                    Yes
+                </button>
+                <form asp-action="Unpark">
+                    <input type="hidden" asp-for="LeavingVehicle.Id" />
+                    <input type="submit" value="No" class="btn btn-outline-danger w-100" />
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Your Receipt</h5>
+
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+
+                    <h4>Receipt details:</h4>
+                    <hr />
+                    <dl class="row w-100">
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.LeavingVehicle.VehicleType)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.LeavingVehicle.VehicleType)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.LeavingVehicle.RegNr)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.LeavingVehicle.RegNr)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.LeavingVehicle.Color)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.LeavingVehicle.Color)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.LeavingVehicle.Brand)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.LeavingVehicle.Brand)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.LeavingVehicle.Model)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.LeavingVehicle.Model)
+                        </dd>
+                        <dt class="col-sm-6">
+                            Total parking (hours)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ParkingTime)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.ParkingCost)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ParkingCost)
+                        </dd>
+                    </dl>
+
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                       
-                        <h4>Receipt details:</h4>
-                        <hr />
-                        <dl class="row w-100">
-                            <dt class="col-sm-6">
-                                @Html.DisplayNameFor(model => model.LeavingVehicle.VehicleType)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.LeavingVehicle.VehicleType)
-                            </dd>
-                            <dt class="col-sm-6">
-                                @Html.DisplayNameFor(model => model.LeavingVehicle.RegNr)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.LeavingVehicle.RegNr)
-                            </dd>
-                            <dt class="col-sm-6">
-                                @Html.DisplayNameFor(model => model.LeavingVehicle.Color)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.LeavingVehicle.Color)
-                            </dd>
-                            <dt class="col-sm-6">
-                                @Html.DisplayNameFor(model => model.LeavingVehicle.Brand)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.LeavingVehicle.Brand)
-                            </dd>
-                            <dt class="col-sm-6">
-                                @Html.DisplayNameFor(model => model.LeavingVehicle.Model)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.LeavingVehicle.Model)
-                            </dd>
-                            <dt class="col-sm-6">
-                                Total parking (hours)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.ParkingTime)
-                            </dd>
-                            <dt class="col-sm-6">
-                                @Html.DisplayNameFor(model => model.ParkingCost)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.ParkingCost)
-                            </dd>
-                        </dl>
-
-                    </div>
-                    @*<div class="modal-footer">*@
+                @*<div class="modal-footer">*@
                 <hr />
-                        <form asp-action="Unpark">
-                            <input type="hidden" asp-for="LeavingVehicle.Id" />
-                            <input type="submit" value="Unpark" class="btn btn-outline-danger w-100" />
-                           
+                <form asp-action="Unpark">
+                    <input type="hidden" asp-for="LeavingVehicle.Id" />
+                    <input type="submit" value="Unpark" class="btn btn-outline-danger w-100" />
 
-                        </form>
-                    @*</div>*@
-                </div>
+
+                </form>
+
+                @*</div>*@
+            </div>
         </div>
     </div>
 
@@ -108,38 +140,38 @@
                     <input type="hidden" asp-for="LeavingVehicle.Id" />
                     <a asp-action="Receipt" asp-route-id="@Model.LeavingVehicle.Id">
                         <input type="submit" value="Unpark" class="btn btn-outline-danger" />-->
-                        @*<input value="Need A Receipt?" class="btn btn-outline-info" />*@
-                    <!--</a>
+    @*<input value="Need A Receipt?" class="btn btn-outline-info" />*@
+    <!--</a>
 
 
 
+
+            </div>
+        </div>
+    </div>-->
+    @*<div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="icon-box">
+
+
+                            <input type="hidden" asp-for="LeavingVehicle.Id" />
+                            <i class="material-icons">&#xE876;</i>
+
+
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    <a asp-action="Receipt" asp-route-id="@Model.LeavingVehicle.Id"><input value="Need A Receipt?" class="btn btn-outline-info" /></a>
+
+                        <input type="hidden" asp-for="LeavingVehicle.Id" />
+                        <button class="btn btn-outline-info" data-dismiss="modal"><span>Close</span> <i class="material-icons">&#xE5C8;</i></button>
 
                 </div>
             </div>
-        </div>-->
-        @*<div class="modal-dialog modal-confirm">
-                <div class="modal-content">
-                    <div class="modal-header justify-content-center">
-                        <div class="icon-box">
-
-
-                                <input type="hidden" asp-for="LeavingVehicle.Id" />
-                                <i class="material-icons">&#xE876;</i>
-
-
-                        </div>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <a asp-action="Receipt" asp-route-id="@Model.LeavingVehicle.Id"><input value="Need A Receipt?" class="btn btn-outline-info" /></a>
-
-                            <input type="hidden" asp-for="LeavingVehicle.Id" />
-                            <button class="btn btn-outline-info" data-dismiss="modal"><span>Close</span> <i class="material-icons">&#xE5C8;</i></button>
-
-                    </div>
-                </div>
-            </div>*@
-        <!--<div>
+        </div>*@
+    <!--<div>
            </div>
         </div>
 

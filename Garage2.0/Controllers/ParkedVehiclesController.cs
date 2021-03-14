@@ -71,6 +71,16 @@ namespace Garage2._0.Controllers
             return View();
         }
 
+        public IActionResult SuccessEdit()
+        {
+            return View();
+        }
+
+        public IActionResult SuccessUnpark()
+        {
+            return View();
+        }
+
         // POST: ParkedVehicles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -99,6 +109,8 @@ namespace Garage2._0.Controllers
             }
             return View(parkedVehicle);
         }
+
+        
 
         // GET: ParkedVehicles/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -153,9 +165,9 @@ namespace Garage2._0.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(SuccessEdit));
             }
-            return View(parkedVehicle);
+            return View(nameof(Index));
         }
 
         // GET: ParkedVehicles/Delete/5
@@ -186,7 +198,7 @@ namespace Garage2._0.Controllers
             var parkedVehicle = await _context.ParkedVehicle.FindAsync(id);
             _context.ParkedVehicle.Remove(parkedVehicle);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(HomePage)); //ToDo:
+            return RedirectToAction(nameof(SuccessUnpark)); //ToDo:
         }
 
         private bool ParkedVehicleExists(int id)
