@@ -6,11 +6,11 @@
 
 
 
-<h3>Are you sure you want unpark this vehicle?</h3>
-<div>
-    <h4>Vehicle details:</h4>
+<h3 class="text-info">Are you sure you want unpark this vehicle?</h3>
+<div class="align-self-center">
+    <h4 class="text-info">Vehicle details:</h4>
     <hr />
-    <dl class="row">
+    <dl class="row text-info table table-dark table-striped">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LeavingVehicle.VehicleType)
         </dt>
@@ -54,15 +54,14 @@
             @Html.DisplayFor(model => model.ParkingCost)
         </dd>
     </dl>
+    </div>
+    @{ 
+        Html.RenderPartial("UnparkFooter");
+    }
+  
 
-    <form asp-action="Unpark">
-        <input type="hidden" asp-for="LeavingVehicle.Id" />
-        <input type="submit" value="Unpark" class="btn btn-outline-danger" />
-        <a asp-action="HomePage"><input value="Home" class="btn btn-outline-info" /></a>
-        <a asp-action="Receipt" asp-route-id="@Model.LeavingVehicle.Id"><input value="Need A Receipt?" class="btn btn-outline-info" /></a>
-    </form>
 
-</div>
+  
     
 
      

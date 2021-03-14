@@ -7,9 +7,18 @@
 <h1>This is your receipt</h1>
 
 
+@{ 
+    Html.RenderPartial("Unpark");
+
+}
+
+@{ 
+    Html.RenderPartial("ReceiptFooter");
+}
 
 
-<div class="form-group">
+
+@*<div class="form-group">
     <h4>Vehicle details:</h4>
     <hr />
     <dl class="row">
@@ -55,13 +64,14 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ParkingCost)
         </dd>
-    </dl>
-    <form asp-action="HomePage">
+    </dl>*@
+    @*<div >
         <input type="hidden" asp-for="@Model.LeavingVehicle.Id" />
+        <input asp-action="Unpark" type="submit" value="Home" class="btn btn-outline-danger" asp-route-id="@Model.LeavingVehicle.Id"/>
 
-        <a asp-action="HomePage"><input type="submit" value="Return Home" class="btn btn-outline-info" /></a>
+        <a><input type="submit" value="Return Home" class="btn btn-outline-info" /></a>
 
-    </form>
+    </div>
 
 
-</div>
+</div>*@

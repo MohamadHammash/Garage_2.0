@@ -80,17 +80,21 @@ select, option{
     background: transparent !important;
 }
 
-.modal-confirm {
-    color: #434e65;
-    width: 525px;
+.modal {
+    background-color: lightcyan !important;
+}
+.modal-content {
+   /* background-color: lightcyan !important;*/
+    background-color: #343a40 !important;
+    color: #17a2b8 !important;
 }
 
-    .modal-confirm .modal-content {
-        padding: 20px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: none;
-    }
+.modal-confirm .modal-content {
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
 
     .modal-confirm .modal-header {
         background: #47c9a2;

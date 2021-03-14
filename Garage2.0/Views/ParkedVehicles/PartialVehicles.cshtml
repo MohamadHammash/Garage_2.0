@@ -2,7 +2,7 @@
 
 
 
-<table class="table table-dark table-striped">
+<table class="table table-dark table-striped text-info">
     <thead>
         <tr>
             <th>
@@ -55,10 +55,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ArrivalTime)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Unpark" asp-route-id="@item.Id">Leave the garage</a>
+                <td >
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="text-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="text-info">Details</a> |
+                    <a asp-action="Unpark" asp-route-id="@item.Id" class="text-info">Leave the garage</a>
                 </td>
             </tr>
         }
