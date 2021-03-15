@@ -4,7 +4,7 @@
     {
         Car,
         Truck,
-        MotorCycle,
-        Buss
+        Motorcycle,
+        Bus
     }
 }
