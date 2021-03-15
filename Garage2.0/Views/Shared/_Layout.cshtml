@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark  border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark  border-bottom box-shadow">
             <div class="container">
                 <a class="navbar-brand text-info" asp-area="" asp-controller="ParkedVehicles" asp-action="HomePage">Garage</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -22,21 +22,26 @@
                         <li class="nav-item">
                             <a class="nav-link text-info" asp-area="" asp-controller="ParkedVehicles" asp-action="Index">Vehicles detailed list</a>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    <div  >
+        <img src="~/assets/MicrosoftTeams-image.png" alt="Garage Logo" id="img" />
+    </div>
+
     <div class="container">
         <main role="main" class="pb-3">
+
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-info bg-dark">
         <div class="container text-info text-center">
-            &copy; NA21 Group 2 Garage 2.0 - <a asp-area=""  class="text-info" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; NA21 Group 2 Garage 2.0 - <a asp-area="" class="text-info" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
