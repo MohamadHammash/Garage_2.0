@@ -1,5 +1,4 @@
-﻿@*model IEnumerable<ParkedVehicle>*@
-@model ParkedVehiclesViewModel
+﻿@model ParkedVehiclesViewModel
 @inject Garage2._0.services.ITypeSelectService service
 @{
     ViewData["Title"] = "Vehicles Details";
@@ -20,7 +19,7 @@
             </select>
         </div>
         <div class="input-group-append">
-            <button type="submit" class="btn btn-info"><i class="fa fa-search">&emsp;Search</i></button>
+            <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
         </div>
     </div>
 </form>
