@@ -45,7 +45,7 @@ namespace Garage2._0.Data
             modelBuilder.Entity<ParkedVehicle>().HasData(new ParkedVehicle
             {
                 Id = 3,
-                VehicleType = VehicleType.MotorCycle,
+                VehicleType = VehicleType.Motorcycle,
                 RegNr = "HDA555",
                 Color = "Green",
                 Brand = "Harley Davidson",
