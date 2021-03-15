@@ -44,9 +44,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="ArrivalTime" class="control-label"></label>
-                <div>
-                    @Html.DisplayFor(model => model.ArrivalTime)
-                </div>
+                <input asp-for="ArrivalTime" readonly class="form-control" />
+                <span asp-validation-for="ArrivalTime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-outline-info w-100" />
