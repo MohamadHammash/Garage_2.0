@@ -140,8 +140,11 @@ namespace Garage2._0.Controllers
             {
                 return NotFound();
             }
-            bool RegNrExits = _context.ParkedVehicle.Any //ToDo
-        (x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id);
+
+            bool RegNrExits = _context.ParkedVehicle.Any(
+                x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id
+            );
+
             if (RegNrExits == true)
             {
                 ModelState.AddModelError("RegNr", "Vehicle already exists");
@@ -152,6 +155,7 @@ namespace Garage2._0.Controllers
                 try
                 {
                     _context.Update(parkedVehicle);
+                    _context.Entry(parkedVehicle).Property(x => x.ArrivalTime).IsModified = false;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
