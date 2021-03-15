@@ -18,6 +18,7 @@ namespace Garage2._0.Models.ViewModels
         [Display(Name = "Type")]
         public VehicleType? VehicleType { get; set; } //ToDo:
         [Display(Name = "Arrival Time")]
+        [DisplayFormat(DataFormatString = "{0:yy-MMMM-dd HH:mm} O'clock")]
         public DateTime ArrivalTime { get; set; }
        
         public DateTime DepartureTime { get; set; }
