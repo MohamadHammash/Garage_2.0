@@ -99,9 +99,6 @@ namespace Garage2._0.Controllers
             {
 
                 parkedVehicle.ArrivalTime = DateTime.Now;
-
-
-
                 _context.Add(parkedVehicle);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(SuccessModal)); //ToDo:
@@ -271,17 +268,6 @@ namespace Garage2._0.Controllers
             return View(nameof(Index), model);
 
         }
-
-        
-
-
-
-
-
-
-
-
-
 
     }
 }
