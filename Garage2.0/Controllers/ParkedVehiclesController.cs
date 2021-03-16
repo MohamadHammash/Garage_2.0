@@ -34,7 +34,6 @@ namespace Garage2._0.Controllers
 
 
             return View(nameof(Index), model);
-            //return View(await _context.ParkedVehicle.ToListAsync());
         }
 
 
@@ -266,8 +265,39 @@ namespace Garage2._0.Controllers
 
             };
             return View(nameof(Index), model);
-
         }
+        
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
 
     }
 }

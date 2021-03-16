@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-//using SQLite;
 
 namespace Garage2._0.Models
 {
@@ -16,7 +15,6 @@ namespace Garage2._0.Models
         [Display(Name = "Type")]
         public VehicleType VehicleType { get; set; }
         [Display(Name = "Registration Number")]
-        //[Unique]
         public string RegNr { get; set; }
         public string Color { get; set; }
         [StringLength(30)]
