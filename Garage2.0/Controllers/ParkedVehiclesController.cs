@@ -88,7 +88,7 @@ namespace Garage2._0.Controllers
         public async Task<IActionResult> Park(ParkedVehicle parkedVehicle)
         {
 
-            bool RegNrExits = _context.ParkedVehicle.Any //ToDo
+            bool RegNrExits = _context.ParkedVehicle.Any 
          (x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id);
             if (RegNrExits == true)
             {
@@ -100,7 +100,7 @@ namespace Garage2._0.Controllers
                 parkedVehicle.ArrivalTime = DateTime.Now;
                 _context.Add(parkedVehicle);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(SuccessModal)); //ToDo:
+                return RedirectToAction(nameof(SuccessModal)); 
 
             }
             return View(parkedVehicle);
@@ -198,7 +198,7 @@ namespace Garage2._0.Controllers
             var parkedVehicle = await _context.ParkedVehicle.FindAsync(id);
             _context.ParkedVehicle.Remove(parkedVehicle);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(SuccessUnpark)); //ToDo:
+            return RedirectToAction(nameof(SuccessUnpark)); 
         }
 
         private bool ParkedVehicleExists(int id)
