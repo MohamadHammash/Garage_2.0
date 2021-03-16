@@ -144,6 +144,7 @@ namespace Garage2._0.Controllers
             if (RegNrExits == true)
             {
                 ModelState.AddModelError("RegNr", "Vehicle already exists");
+                return View(parkedVehicle);
             }
 
             if (ModelState.IsValid)
