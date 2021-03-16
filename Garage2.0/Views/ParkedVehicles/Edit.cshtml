@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ArrivalTime" class="control-label"></label>
-                <input asp-for="ArrivalTime" readonly class="form-control" />
+                <p asp-for="ArrivalTime" readonly class="form-control bg-transparent">@Model.ArrivalTime.ToString("yyyy-MMMM-dd HH:mm") </p>
                 <span asp-validation-for="ArrivalTime" class="text-danger"></span>
             </div>
             <div class="form-group">
