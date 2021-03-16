@@ -21,8 +21,6 @@ namespace Garage2._0.Models.ViewModels
         [DisplayFormat(DataFormatString = "{0:yy-MMMM-dd HH:mm} O'clock")]
         public DateTime ArrivalTime { get; set; }
        
-        public DateTime DepartureTime { get; set; }
-
-
+       
     }
 }
