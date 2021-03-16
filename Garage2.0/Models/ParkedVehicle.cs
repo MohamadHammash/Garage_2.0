@@ -15,6 +15,7 @@ namespace Garage2._0.Models
         [Display(Name = "Type")]
         public VehicleType VehicleType { get; set; }
         [Display(Name = "Registration Number")]
+        [Required]
         public string RegNr { get; set; }
         public string Color { get; set; }
         [StringLength(30)]
