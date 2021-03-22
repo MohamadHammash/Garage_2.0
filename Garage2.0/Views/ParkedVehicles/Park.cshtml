@@ -12,15 +12,16 @@
     <div class="col-md-4">
         <form asp-action="Park">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="VehicleType" class="control-label"></label>
+                <span><sup class="text-danger">*  </sup>  </span> <label asp-for="VehicleType" class="control-label"></label>
                 <select asp-for="VehicleType" asp-items="@Html.GetEnumSelectList<VehicleType>()" class="form-control">
                     <option selected="selected" value="">Please select a vehicle type</option>
                 </select>
                 <span asp-validation-for="VehicleType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RegNr" class="control-label"></label>
+                <span><sup class="text-danger">*  </sup>  </span> <label asp-for="RegNr" class="control-label"></label>
                 <input asp-for="RegNr" class="form-control" />
                 <span asp-validation-for="RegNr" class="text-danger"></span>
             </div>
@@ -40,10 +41,11 @@
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NrOfWheels" class="control-label"></label>
+                <span><sup class="text-danger">*  </sup>  </span> <label asp-for="NrOfWheels" class="control-label"></label>
                 <input asp-for="NrOfWheels" class="form-control" />
                 <span asp-validation-for="NrOfWheels" class="text-danger"></span>
             </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
                 <input type="submit" value="Park a vehicle" class="btn btn-outline-info w-100" />

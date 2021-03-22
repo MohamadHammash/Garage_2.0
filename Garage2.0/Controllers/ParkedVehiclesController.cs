@@ -88,9 +88,9 @@ namespace Garage2._0.Controllers
         public async Task<IActionResult> Park(ParkedVehicle parkedVehicle)
         {
 
-            bool RegNrExits = _context.ParkedVehicle.Any 
-         (x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id);
-            if (RegNrExits == true)
+         //   bool RegNrExits = _context.ParkedVehicle.Any 
+         //(x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id);
+            if (RegNrExists(parkedVehicle.RegNr))
             {
                 ModelState.AddModelError("RegNr", "Vehicle already exists");
             }
@@ -137,11 +137,11 @@ namespace Garage2._0.Controllers
                 return NotFound();
             }
 
-            bool RegNrExits = _context.ParkedVehicle.Any(
-                x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id
-            );
+            //bool RegNrExits = _context.ParkedVehicle.Any(
+            //    x => x.RegNr == parkedVehicle.RegNr && x.Id != parkedVehicle.Id
+            //);
 
-            if (RegNrExits == true)
+            if (RegNrExists(parkedVehicle.RegNr))
             {
                 ModelState.AddModelError("RegNr", "Vehicle already exists");
                 return View(parkedVehicle);
@@ -267,7 +267,30 @@ namespace Garage2._0.Controllers
             };
             return View(nameof(Index), model);
         }
-        
+
+
+
+
+        public bool RegNrExists(string regNr)
+        {
+            var garage = _context.ParkedVehicle;
+            return (garage.FirstOrDefault(v => regNr == v.RegNr) is null ? false : true);
+        }
+
+
+
+        [AcceptVerbs("GET", "POST")]
+        public IActionResult RegNumExists(string regNr, int id)
+        {
+            var garage = _context.ParkedVehicle;
+            if (garage.Any(v => regNr == v.RegNr && id != v.Id))
+            {
+                return Json($"Vehicle already exits");
+            }
+            return Json(true);
+        }
+
+       
 
 
 
@@ -278,18 +301,8 @@ namespace Garage2._0.Controllers
 
 
 
-        
 
 
-
-
-
-
-
-
-
-
-        
 
 
 
